@@ -1,0 +1,91 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "URL Shortener API",
+    "description": "API for shortening URLs and resolving short URLs to long URLs.",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000/api/v1",
+      "description": "Local server for version 1 of the API"
+    }
+  ],
+  "paths": {
+    "/{short_url}": {
+      "get": {
+        "summary": "Redirect to the original long URL",
+        "description": "Takes a short URL and redirects to the original long URL.",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "short_url",
+            "description": "The short URL to resolve",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "abc123"
+            }
+          }
+        ],
+        "responses": {
+          "301": {
+            "description": "Redirected to the long URL"
+          },
+          "404": {
+            "description": "Short URL not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/shorten": {
+      "post": {
+        "summary": "Shorten a long URL",
+        "description": "Takes a long URL and returns a short URL.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "long_url": {
+                    "type": "string",
+                    "example": "https://example.com"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successfully shortened URL",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "short_url": {
+                      "type": "string",
+                      "example": "http://short.ly/abc123"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid URL format"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    }
+  }
+}
