@@ -26,13 +26,16 @@ To run this application, you need to have the following installed:
     ```bash
     npm install
     ```
+## System Diagram
+<img src="images/b.png" alt="Description of image" width="auto" height="auto">
+
+## Code coverage
+<img src="images/a.png" alt="Description of image" width="auto" height="auto">
 
 ## Configuration
+
 
 Create a `.env` file in the root of the project and add the following configurations:
 ```env
 PORT=3000
 MONGO_URI=mongodb://localhost:27017/shorten-url
-
-## Configuration
-
