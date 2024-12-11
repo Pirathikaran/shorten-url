@@ -32,8 +32,14 @@ To run this application, you need to have the following installed:
 ## Code coverage
 <img src="images/a.png" alt="Description of image" width="auto" height="auto">
 
-## Configuration
+## Swagger and postman collection
+Created two folder in project
 
+when running application can access swagger
+http://localhost:3000/api-docs/
+
+
+## Configuration
 
 Create a `.env` file in the root of the project and add the following configurations:
 ```env
